@@ -1,0 +1,81 @@
+{
+  "name": "eslint-config-zmrl",
+  "version": "0.1.0",
+  "description": "My ESLint configuration, suitable for most projects.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "types"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zmrl010/eslint-config-zmrl.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "best practices",
+    "lint",
+    "shareable configuration"
+  ],
+  "author": "zmrl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zmrl010/eslint-config-zmrl/issues"
+  },
+  "homepage": "https://github.com/zmrl010/eslint-config-zmrl#readme",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint --fix",
+    "prepare": "pnpm build && pnpm prepare:husky",
+    "prepare:husky": "is-ci || husky install",
+    "test": "run-p lint",
+    "build": "tsc -b",
+    "build-test": "run-s build test",
+    "generate-types": "generate-rule-types src/types",
+    "generate-types:debug": "NODE_DEBUG='generate-types' && pnpm generate-types",
+    "clean:types": "rimraf src/types",
+    "clean:dist": "rimraf dist"
+  },
+  "packageManager": "pnpm@8.3.1",
+  "peerDependencies": {
+    "eslint": "^8.22.0",
+    "typescript": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0",
+    "eslint": "^8.39.0",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "pnpm": "^8.3.1",
+    "prettier": "^2.8.8",
+    "pretty-quick": "^3.1.3",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@typescript-eslint/utils": "^5.59.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "npm:eslint-plugin-i@2.27.5-1"
+  }
+}
