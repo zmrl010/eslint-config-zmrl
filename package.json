@@ -36,14 +36,12 @@
   "homepage": "https://github.com/zmrl010/eslint-config-zmrl#readme",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint --fix",
+    "lint": "eslint",
     "prepare": "pnpm build && pnpm prepare:husky",
     "prepare:husky": "is-ci || husky install",
-    "test": "run-p lint",
+    "test": "pnpm lint",
     "build": "tsc -b",
     "build-test": "run-s build test",
-    "generate-types": "generate-rule-types src/types",
-    "generate-types:debug": "NODE_DEBUG='generate-types' && pnpm generate-types",
     "clean:types": "rimraf src/types",
     "clean:dist": "rimraf dist"
   },
