@@ -5,8 +5,7 @@
   "type": "module",
   "files": [
     "dist",
-    "src",
-    "types"
+    "src"
   ],
   "exports": {
     ".": "./dist/index.js",
@@ -24,10 +23,10 @@
   },
   "keywords": [
     "eslint",
-    "eslint-config",
-    "best practices",
+    "eslintconfig",
     "lint",
-    "shareable configuration"
+    "shareable config",
+    "javascript"
   ],
   "author": "zmrl",
   "license": "MIT",

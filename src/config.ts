@@ -1,18 +1,14 @@
 import prettierConfig from "eslint-config-prettier";
 import { config as eslintConfig } from "./eslint.js";
 import type { FlatConfig } from "./flat-eslint-config.js";
-import {
-  config as importConfig,
-  typescriptConfig as importTSConfig,
-} from "./import.js";
+import { configs as importConfigs } from "./import.js";
 import { config as typescriptConfig } from "./typescript.js";
 
-const config: FlatConfig = [
-  prettierConfig,
-  importConfig,
+const config = [
   eslintConfig,
+  ...importConfigs,
   typescriptConfig,
-  importTSConfig,
-];
+  prettierConfig,
+] satisfies FlatConfig;
 
 export default config;

@@ -1,14 +1,23 @@
 import importPlugin from "eslint-plugin-import";
-import type { FlatConfigItem } from "./flat-eslint-config.js";
+import type { FlatConfig, FlatConfigItem } from "./flat-eslint-config.js";
 import type { Import } from "./types/import/index.js";
 
-const plugins = { import: importPlugin };
-
-const settings = {
-  "import/ignore": ["node_modules", ".json$", ".(scss|less|css)$"],
-};
+const baseConfig = {
+  plugins: { import: importPlugin },
+  settings: {
+    "import/ignore": ["node_modules", ".json$", ".(scss|less|css)$"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    "import/resolver": {
+      typescript: true,
+      node: true,
+    },
+  },
+} satisfies FlatConfigItem;
 
 export const config = {
+  ...baseConfig,
   rules: {
     "import/default": ["error"],
     "import/named": ["error"],
@@ -45,7 +54,7 @@ export const config = {
     "import/no-restricted-paths": "off",
     "import/no-self-import": ["error"],
     "import/no-unassigned-import": "off",
-    "import/no-unresolved": ["error"],
+    "import/no-unresolved": ["error", { ignore: ["^eslint-config-zmrl$"] }],
     "import/no-unused-modules": "off",
     "import/no-useless-path-segments": "off",
     "import/no-webpack-loader-syntax": ["error"],
@@ -65,11 +74,10 @@ export const config = {
     "import/consistent-type-specifier-style": ["error"],
     "import/no-empty-named-blocks": ["error"],
   } satisfies Import,
-  settings,
-  plugins,
 } satisfies FlatConfigItem;
 
 export const typescriptConfig = {
+  ...baseConfig,
   files: ["**/*.ts?(x)"],
   rules: {
     "import/default": "off",
@@ -78,5 +86,6 @@ export const typescriptConfig = {
     "import/no-named-as-default-member": "off",
     "import/no-unresolved": "off",
   } satisfies Partial<Import>,
-  plugins,
 } satisfies FlatConfigItem;
+
+export const configs = [config, typescriptConfig] satisfies FlatConfig;

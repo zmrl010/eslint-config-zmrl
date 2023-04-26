@@ -1,7 +1,7 @@
-import typescriptPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 import fs from "fs";
 import path from "path";
+import typescriptPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import type { FlatConfigItem, LanguageOptions } from "./flat-eslint-config.js";
 import type { TypescriptEslint } from "./types/@typescript-eslint/index.js";
 import type { Eslint } from "./types/eslint/index.js";
@@ -11,9 +11,11 @@ import type { Eslint } from "./types/eslint/index.js";
  */
 export function resolveFirstExisting(...paths: string[]): string | undefined {
   const filepath = paths.find((p) => fs.existsSync(p));
+
   if (!filepath) {
     return;
   }
+
   return path.resolve(filepath);
 }
 
