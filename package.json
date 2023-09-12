@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-zmrl",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My ESLint configuration, suitable for most projects.",
   "type": "module",
   "files": [
