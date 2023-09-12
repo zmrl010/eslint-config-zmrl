@@ -21,10 +21,10 @@ export function resolveFirstExisting(...paths: string[]): string | undefined {
 
 const projectTsConfig = resolveFirstExisting(
   "tsconfig.json",
-  "types/tsconfig.json"
+  "types/tsconfig.json",
 );
 
-export const config = {
+export const config: FlatConfigItem = {
   plugins: { "@typescript-eslint": typescriptPlugin },
   rules: {
     "constructor-super": "off", // ts(2335) & ts(2377)
@@ -242,4 +242,4 @@ export const config = {
       project: projectTsConfig,
     },
   } satisfies LanguageOptions,
-} satisfies FlatConfigItem;
+};
