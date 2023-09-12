@@ -23,7 +23,7 @@
   },
   "keywords": [
     "eslint",
-    "eslintconfig",
+    "config",
     "lint",
     "shareable config",
     "javascript"
@@ -35,20 +35,18 @@
   },
   "homepage": "https://github.com/zmrl010/eslint-config-zmrl#readme",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "lint": "eslint",
-    "prepare": "pnpm build && pnpm prepare:husky",
-    "prepare:husky": "is-ci || husky install",
+    "prepare": "pnpm build",
     "test": "pnpm lint",
     "build": "tsc -b",
-    "build-test": "run-s build test",
+    "build-test": "pnpm build && pnpm test",
     "clean:types": "rimraf src/types",
     "clean:dist": "rimraf dist"
   },
   "packageManager": "pnpm@8.3.1",
   "peerDependencies": {
-    "eslint": "^8.22.0",
-    "typescript": ">=5.0.0"
+    "eslint": "^8",
+    "typescript": ">=5"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -58,11 +56,7 @@
   "devDependencies": {
     "@types/node": "^20.6.0",
     "eslint": "^8.49.0",
-    "husky": "^8.0.3",
-    "is-ci": "^3.0.1",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
-    "pretty-quick": "^3.1.3",
     "rimraf": "^5.0.1",
     "typescript": "^5.2.2"
   },
